@@ -1,0 +1,22 @@
+[Unit]
+Description=FlowPilot (Claude Code proactive assistant on Discord)
+After=network-online.target
+Wants=network-online.target
+OnFailure=flowpilot-notify.service
+StartLimitIntervalSec=300
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=__USER__
+WorkingDirectory=__HOME__
+EnvironmentFile=__FLOWPILOT_HOME__/.env
+Environment="HOME=__HOME__"
+Environment="FLOWPILOT_HOME=__FLOWPILOT_HOME__"
+Environment="PATH=__HOME__/.bun/bin:__HOME__/.local/bin:/usr/local/bin:/usr/bin:/bin:/snap/bin"
+ExecStart=/usr/bin/python3 __FLOWPILOT_HOME__/scripts/start-flowpilot.py
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

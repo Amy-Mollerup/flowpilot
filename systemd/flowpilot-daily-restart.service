@@ -1,0 +1,6 @@
+[Unit]
+Description=Daily fresh start for FlowPilot (clears the Claude Code context)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/systemctl restart flowpilot.service

@@ -1,0 +1,10 @@
+[Unit]
+Description=Tell Discord that FlowPilot crashed and stopped restarting
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=__USER__
+Environment="HOME=__HOME__"
+Environment="FLOWPILOT_HOME=__FLOWPILOT_HOME__"
+ExecStart=__FLOWPILOT_HOME__/scripts/discord-notify.sh "⚠️ FlowPilot crashed and has stopped restarting. The server is up, but the assistant isn't running. Restart it with: sudo systemctl restart flowpilot"

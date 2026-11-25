@@ -1,0 +1,10 @@
+[Unit]
+Description=Restart FlowPilot once a day during quiet hours
+
+[Timer]
+# Local server time. Pick an hour inside your quiet hours.
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
